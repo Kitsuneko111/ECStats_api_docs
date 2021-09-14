@@ -15,7 +15,85 @@ The endpoints mirror the website, so the user endpoints are `/user/<USER>/stats.
 ### GET /user
 
 #### Example Response
+<pre>
+{
+  <a href="#average_speed">"about_string"</a>: "Developer of ECRanked",
+  <a href="#average_speed">"average_speed"</a>: 1.6421,
+  <a href="#average_ping">"average_ping"</a>: 64.626,
+  <a href="#percent_stopped">"percent_stopped"</a>: 0.291188,
+  <a href="#percent_upsidedown">"percent_upsidedown"</a>: 0.023962,
+  <a href="#total_games">"total_games"</a>: 50,
+  <a href="#total_deaths">"total_deaths"</a>: 344,
+  <a href="#average_deaths">"average_deaths"</a>: 6.88,
+  <a href="#discord_name">"discord_name"</a>: "BiffBish",
+  <a href="#discord_pfp">"discord_pfp"</a>: "https://cdn.discordapp.com/avatars/301343234108424192/788a06ff1b8e6e324f879948081376e2.png",
+  <a href="#loadout">"loadout"</a>: {
+    "0": 0.000594,
+    "1": 0.000045,
+    "2": 0.0,
+    ...
+    "62": 0.400121,
+    "63": 0.0
+  },
+  <a href="#top_loadout">"top_loadout"</a>: [
+    [
+      "33",
+      0.396773
+    ],
+    [
+      "35",
+      0.291986
+    ],
+    [60 more...],
+    [
+      "62",
+      0.0
+    ],
+    [
+      "63",
+      0.0
+    ]
+  ]
+}
+</pre>
+#### `about_string`
+The string that is used in the about me section.
+- null - There is no about me string
+#### `average_speed`
+The average speed of the player measured in meters per second.
 
+#### `average_ping`
+The average ping of the player measured in milliseconds.
+
+#### `percent_stopped`
+The percentage of time the player is "stopped".
+
+#### `percent_upsidedown`
+The percentage of time the player is "upside-down".
+
+#### `total_games`
+The total number of games the player has played in.
+
+#### `total_deaths`
+The total number of times the player has died.
+
+#### `average_deaths`
+The average number of deaths per game.
+
+#### `discord_name`
+The discord username of the person if they have linked their discord account.
+- null - The discord is not linked
+#### `discord_pfp`
+The discord profile picture of the person if they have linked their discord account.
+- null - The discord is not linked
+#### `loadout{}`
+A dictionary of loadouts and percentage of frames they were in used in. The loadouts are stored via numbers in a <a href="#bitmaps"> bitmap </a>
+#### `top_loadout[]`
+A list of the persons top loadouts sorted from greatest to lowest
+#### `top_loadout.[0]`
+The loadout number in string form.
+#### `top_loadout.[1]`
+The percentage of time it has been used.
 ### GET /replay
 
 #### Example Response
@@ -28,96 +106,37 @@ The endpoints mirror the website, so the user endpoints are `/user/<USER>/stats.
   <a href="#match_length">"match_length"</a>: 278,
   <a href="#framerate">"framerate"</a>: 68.44964028776978,
   <a href="#map">"map"</a>: "surge",
-  <a href="#players">"players"</a>: {
-    "GE0-_": {
-      <a href="#team">"team"</a>: 0,
-      <a href="#playerid">"playerid"</a>: 0,
-      <a href="#name">"name"</a>: "GE0-_",
-      <a href="#userid">"userid"</a>: 2719646711436186,
-      <a href="#number">"number"</a>: 22,
-      <a href="#level">"level"</a>: 9,
-      <a href="#startFrame">"startFrame"</a>: 0,
-      <a href="#stats">"stats"</a>: {
-        <a href="#total_frames">"total_frames"</a>: 19029,
-        "total_ping": 1797145,
-        "total_speed": 42329.234783699496,
-        "frames_speed": 15530,
-        "total_upsidedown": 10640,
-        "frames_upsidedown": 15530,
-        "total_stopped": 5289,
-        "frames_stopped": 15530,
-        "total_deaths": 3,
-        "loadout": {
-          "0": 0,
-          "1": 0,
-          "2": 0,
-          "3": 0,
-          "4": 0,
-          "5": 0,
-          "6": 0,
-          "7": 19029,
-          "8": 0,
-          "9": 0,
-          "10": 0,
-          "11": 0,
-          "12": 0,
-          "13": 0,
-          "14": 0,
-          "15": 0,
-          "16": 0,
-          "17": 0,
-          "18": 0,
-          "19": 0,
-          "20": 0,
-          "21": 0,
-          "22": 0,
-          "23": 0,
-          "24": 0,
-          "25": 0,
-          "26": 0,
-          "27": 0,
-          "28": 0,
-          "29": 0,
-          "30": 0,
-          "31": 0,
-          "32": 0,
-          "33": 0,
-          "34": 0,
-          "35": 0,
-          "36": 0,
-          "37": 0,
-          "38": 0,
-          "39": 0,
-          "40": 0,
-          "41": 0,
-          "42": 0,
-          "43": 0,
-          "44": 0,
-          "45": 0,
-          "46": 0,
-          "47": 0,
-          "48": 0,
-          "49": 0,
-          "50": 0,
-          "51": 0,
-          "52": 0,
-          "53": 0,
-          "54": 0,
-          "55": 0,
-          "56": 0,
-          "57": 0,
-          "58": 0,
-          "59": 0,
-          "60": 0,
-          "61": 0,
+  <a href="#players">"players"</a>: [
+    {
+      <a href="#playersteam">"team"</a>: 0,
+      <a href="#playersplayerid">"playerid"</a>: 0,
+      <a href="#playersname">"name"</a>: "GE0-_",
+      <a href="#playersuserid">"userid"</a>: 2719646711436186,
+      <a href="#playersnumber">"number"</a>: 22,
+      <a href="#playerslevel">"level"</a>: 9,
+      <a href="#playersstartFrame">"startFrame"</a>: 0,
+      <a href="#playersstats">"stats"</a>: {
+        <a href="#playersstatstotal_frames">"total_frames"</a>: 19029,
+        <a href="#playersstatstotal_ping">"total_ping"</a>: 1797145,
+        <a href="#playersstatstotal_speed">"total_speed"</a>: 42329.234783699496,
+        <a href="#playersstatsframes_speed">"frames_speed"</a>: 15530,
+        <a href="#playersstatstotal_upsidedown">"total_upsidedown"</a>: 10640,
+        <a href="#playersstatsframes_upsidedown">"frames_upsidedown"</a>: 15530,
+        <a href="#playersstatstotal_stopped">"total_stopped"</a>: 5289,
+        <a href="#playersstatsframes_stopped">"frames_stopped"</a>: 15530,
+        <a href="#playersstatstotal_deaths">"total_deaths"</a>: 3,
+        <a href="#playersstatstotal_deaths">"loadout"</a>: {
+          "0": 1012,
+          "1": 18017,
+          ...
           "62": 0,
           "63": 0
         },
         "frames_loadout": 19029
       }
     },
-[players.....]
-}
+  [players.....]
+  ]
 }
 </pre>
 
@@ -157,6 +176,68 @@ Team the player was on.
 - 1 - Team Orange(?)
 - 2 - Spectator
 
+#### `players[].playerid`
+
+The player ID of the player.
+- unique per game
+
+#### `players[].name`
+The name of the player.
+
+#### `players[].userid`
+The Oculus ID of the player.
+#### `players[].number`
+The number of the player.
+- not unique
+
+
+#### `players[].level`
+The combat level of the player.
+
+#### `players[].startFrame`
+The frame the player joined the match.
+
+
+#### `players[].stats`
+Dictionary of statistics for the player for that game
+
+
+#### `players[].stats{}.total_frames`
+Total number of frames the player was in the game.
+
+#### `players[].stats{}.total_ping`
+Players ping added up for all total frames.
+
+#### `players[].stats{}.total_speed`
+Players speed (m/s) added up for tracked frames.
+
+#### `players[].stats{}.frames_speed`
+Number of frames the player is not in the spawn room and not traveling under 1m/s.
+
+
+#### `players[].stats{}.total_upsidedown`
+Number of frames the players head is flipped upside-down while tracked 
+
+#### `players[].stats{}.frames_upsidedown`
+Number of frames the player is not in the spawn room
+
+#### `players[].stats{}.total_stopped`
+Number of frames the player is traveling under 1m/s while tracked
+
+#### `players[].stats{}.frames_stopped`
+Number of frames the player is not in the spawn room
+
+#### `players[].stats{}.total_deaths`
+Number of deaths of the player
+
+
+#### `players[].stats{}.loadout`
+A dictionary of loadouts and how many frames they were in use. The loadouts are stored via numbers in a <a href="#bitmaps"> bitmap </a>
+
+
+
+
+
 ## Responses
 
 ### Success
@@ -165,7 +246,7 @@ On a success the API will return a JSON with the data.
 
 ### Fail
 
-On a fail the API will return an error message. This is `There is no user with that username` for /user and `session id not found` for /replay
+On a fail the API will return an error message along with a 404 status code. The error message is `There is no user with that username` for /user and `session id not found` for /replay
 
 ## Concepts
 
